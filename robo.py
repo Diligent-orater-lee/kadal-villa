@@ -16,7 +16,8 @@ def download_and_update_html(html_file_path, target_string, output_folder):
     # Find all tags with an 'href', 'src', or 'srcset' attribute that contain the target string
     all_tags = soup.find_all(lambda tag: (tag.has_attr('href') and target_string in tag['href']) or
                                            (tag.has_attr('src') and target_string in tag['src']) or
-                                           (tag.has_attr('srcset') and target_string in tag['srcset']))
+                                            (tag.has_attr('srcset') and target_string in tag['srcset']) or
+                                            (tag.has_attr('data-svg_src') and target_string in tag['data-svg_src']))
     
     # Download each URL and update tags
     for tag in all_tags:
@@ -24,6 +25,8 @@ def download_and_update_html(html_file_path, target_string, output_folder):
             update_attribute(tag, 'href', output_folder)
         if tag.has_attr('src') and target_string in tag['src']:
             update_attribute(tag, 'src', output_folder)
+        if tag.has_attr('data-svg_src') and target_string in tag['data-svg_src']:
+            update_attribute(tag, 'data-svg_src', output_folder)
         if tag.has_attr('srcset') and target_string in tag['srcset']:
             update_srcset(tag, output_folder)
 
@@ -54,7 +57,7 @@ def download_file(url, output_folder):
         response = requests.get(url)
         if response.status_code == 200:
             filename = os.path.basename(url).split('?')[0]
-            download_path = os.path.join(output_folder, filename)
+            download_path = f"{output_folder}/{filename}"
             with open(download_path, 'wb') as f:
                 f.write(response.content)
             print(f"Downloaded {url} to {download_path}")
@@ -65,7 +68,7 @@ def download_file(url, output_folder):
 
 # Usage
 html_file_path = './index.html'  # Update this path
-target_string = 'https://www.nicdarkthemes.com/themes/hotel-resort/wp/demo/hotel/wp-content/plugins/woocommerce'  # The specific string to look for in hrefs
-output_directory = './auto_files/plugins/woocommerce'  # Folder where files will be saved
+target_string = 'https://www.nicdarkthemes.com/themes/hotel-resort/wp/demo/hotel/wp-content/plugins/revslider/public/assets'  # The specific string to look for in hrefs
+output_directory = './auto_files/plugins/assets'  # Folder where files will be saved
 
 download_and_update_html(html_file_path, target_string, output_directory)
