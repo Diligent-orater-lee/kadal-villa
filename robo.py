@@ -16,7 +16,7 @@ def download_and_update_html(html_file_path, target_string, output_folder):
     # Find all tags with an 'href', 'src', or 'srcset' attribute that contain the target string
     all_tags = soup.find_all(lambda tag: (tag.has_attr('href') and target_string in tag['href']) or
                                            (tag.has_attr('src') and target_string in tag['src']) or
-                                           (tag.has_attr('srcset')))
+                                           (tag.has_attr('srcset') and target_string in tag['srcset']))
     
     # Download each URL and update tags
     for tag in all_tags:
@@ -24,7 +24,7 @@ def download_and_update_html(html_file_path, target_string, output_folder):
             update_attribute(tag, 'href', output_folder)
         if tag.has_attr('src') and target_string in tag['src']:
             update_attribute(tag, 'src', output_folder)
-        if tag.has_attr('srcset'):
+        if tag.has_attr('srcset') and target_string in tag['srcset']:
             update_srcset(tag, output_folder)
 
     # Save the updated HTML content to a new file
@@ -53,7 +53,7 @@ def download_file(url, output_folder):
     try:
         response = requests.get(url)
         if response.status_code == 200:
-            filename = os.path.basename(url)
+            filename = os.path.basename(url).split('?')[0]
             download_path = os.path.join(output_folder, filename)
             with open(download_path, 'wb') as f:
                 f.write(response.content)
@@ -65,7 +65,7 @@ def download_file(url, output_folder):
 
 # Usage
 html_file_path = './index.html'  # Update this path
-target_string = 'https://www.nicdarkthemes.com/themes/hotel-resort/wp/demo/hotel/wp-content/uploads/sites/2/2022/11'  # The specific string to look for in hrefs
-output_directory = './auto_files/uploads'  # Folder where files will be saved
+target_string = 'https://www.nicdarkthemes.com/themes/hotel-resort/wp/demo/hotel/wp-content/plugins/elementor'  # The specific string to look for in hrefs
+output_directory = './auto_files/plugins/elementor'  # Folder where files will be saved
 
 download_and_update_html(html_file_path, target_string, output_directory)
