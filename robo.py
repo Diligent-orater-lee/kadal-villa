@@ -65,7 +65,7 @@ def download_file(url, output_folder):
 
 # Usage
 html_file_path = './index.html'  # Update this path
-target_string = 'https://www.nicdarkthemes.com/themes/hotel-resort/wp/demo/hotel/wp-content/plugins/elementor'  # The specific string to look for in hrefs
-output_directory = './auto_files/plugins/elementor'  # Folder where files will be saved
+target_string = 'https://www.nicdarkthemes.com/themes/hotel-resort/wp/demo/hotel/wp-content/plugins/woocommerce'  # The specific string to look for in hrefs
+output_directory = './auto_files/plugins/woocommerce'  # Folder where files will be saved
 
 download_and_update_html(html_file_path, target_string, output_directory)
