@@ -2200,3 +2200,8 @@ body .is-layout-flex>* {
     font-size: 1.5em;
     line-height: 1.6;
 }
+
+/* COMMON */
+.ms-0 {
+    margin-left: 0 !important;
+}

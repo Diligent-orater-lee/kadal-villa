@@ -31,7 +31,7 @@ def download_and_update_html(html_file_path, target_string, output_folder):
             update_srcset(tag, output_folder)
 
     # Save the updated HTML content to a new file
-    updated_html_file_path = 'updated_' + os.path.basename(html_file_path)
+    updated_html_file_path = os.path.basename(html_file_path)
     with open(updated_html_file_path, 'w', encoding='utf-8') as file:
         file.write(str(soup))
     print(f"Updated HTML saved to {updated_html_file_path}")
@@ -68,7 +68,7 @@ def download_file(url, output_folder):
 
 # Usage
 html_file_path = './index.html'  # Update this path
-target_string = 'https://www.nicdarkthemes.com/themes/hotel-resort/wp/demo/hotel/wp-content/plugins/revslider/public/assets'  # The specific string to look for in hrefs
-output_directory = './auto_files/plugins/assets'  # Folder where files will be saved
+target_string = 'https://www.nicdarkthemes.com/themes/hotel-resort/wp/demo/hotel/wp-content/uploads/sites/2/elementor'  # The specific string to look for in hrefs
+output_directory = './auto_files/css'  # Folder where files will be saved
 
 download_and_update_html(html_file_path, target_string, output_directory)
