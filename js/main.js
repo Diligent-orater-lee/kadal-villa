@@ -17,3 +17,12 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('scroll', checkVisibility);
     checkVisibility(); // Initial check on load
 });
+
+document.getElementById('whatsappForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Stop the form from submitting normally
+    var message = "Enquiry direct whatsapp date time availablity feature implementation. Needs rafii confirmation for UI changes";
+    var encodedMessage = encodeURIComponent(message);
+    var phoneNumber = '+919633096006'; // Replace with the number you want to send the message to
+    var whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank'); // Open WhatsApp in a new tab/window
+});
