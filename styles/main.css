@@ -2522,3 +2522,37 @@ body .is-layout-flex>* {
 .text-center {
     text-align: center !important;
 }
+
+.image-description {
+    position: relative;
+    height: 56px;
+
+    /* animation initial values */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease-out;
+    visibility: hidden;
+}
+
+.image-description h4 {
+    position: absolute;
+    top: 0px;
+    left: 6px;
+}
+
+.image-description p {
+    position: absolute;
+    top: 26px;
+    text-align: start;
+    left: 6px;
+    font-size: 11px !important;
+    line-height: 15px !important;
+}
+
+/* For animations */
+
+.image-description.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
