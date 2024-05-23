@@ -2571,6 +2571,12 @@ body .is-layout-flex>* {
     }
 }
 
+@media (max-width: 767px) {
+    .elementor-element-2833391, .elementor-element-2a620ac {
+        margin-top: 0px !important;
+    }
+}
+
 /* For animations */
 .image-description.is-visible {
     opacity: 1;
