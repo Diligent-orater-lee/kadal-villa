@@ -2523,6 +2523,10 @@ body .is-layout-flex>* {
     text-align: center !important;
 }
 
+.w-100 {
+    width: 100% !important;
+}
+
 .image-description {
     position: relative;
     height: 56px;
@@ -2549,8 +2553,25 @@ body .is-layout-flex>* {
     line-height: 15px !important;
 }
 
-/* For animations */
+.elementor-element-7704f6db figure.elementor-image-box-img {
+    width: 80% !important;
+}
 
+.id-879584 .elementor-container {
+    max-width: 1200px !important;
+    flex-direction: row-reverse;
+}
+
+@media (min-width: 1025px) {
+    .id-879584 {
+        margin-top: 72px;
+    }
+    .id-879584 .elementor-element-e128e8b{
+        transform: translateX(-40px);
+    }
+}
+
+/* For animations */
 .image-description.is-visible {
     opacity: 1;
     transform: translateY(0);

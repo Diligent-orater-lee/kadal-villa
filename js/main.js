@@ -24,5 +24,5 @@ document.getElementById('whatsappForm').addEventListener('submit', function(even
     var encodedMessage = encodeURIComponent(message);
     var phoneNumber = '+919633096006'; // Replace with the number you want to send the message to
     var whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.open(whatsappUrl, '_blank'); // Open WhatsApp in a new tab/window
+    window.open(whatsappUrl); // Open WhatsApp in a new tab/window
 });
