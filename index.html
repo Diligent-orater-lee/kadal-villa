@@ -604,12 +604,8 @@
                                                             <div class="nd_booking_section nd_booking_height_15"></div>
                                                             <div
                                                                 class="nd_booking_section nd_booking_section_box_search_field nd_booking_border_style_solid nd_booking_padding_10_20 nd_booking_position_relative">
-                                                                <p class="nd_booking_field_search nd_booking_display_inline_block"
-                                                                    id="nd_booking_date_number_from_front">
-                                                                    17</p>
-                                                                <p class="nd_booking_field_search nd_booking_display_inline_block"
-                                                                    id="nd_booking_date_month_from_front">
-                                                                    May</p>
+                                                                <p class="nd_booking_field_search nd_booking_display_inline_block" id="nd_booking_date_number_from_front">17</p>
+                                                                <p class="nd_booking_field_search nd_booking_display_inline_block" id="nd_booking_date_month_from_front">May</p>
                                                                 <img alt=""
                                                                     class="nd_booking_position_absolute nd_booking_right_20 nd_booking_top_50_percentage nd_booking_margin_top_6_negative"
                                                                     decoding="async"
@@ -634,12 +630,8 @@
                                                             <div class="nd_booking_section nd_booking_height_15"></div>
                                                             <div
                                                                 class="nd_booking_section nd_booking_section_box_search_field nd_booking_border_style_solid nd_booking_padding_10_20 nd_booking_position_relative">
-                                                                <p class="nd_booking_field_search nd_booking_display_inline_block"
-                                                                    id="nd_booking_date_number_to_front">
-                                                                    18</p>
-                                                                <p class="nd_booking_field_search nd_booking_display_inline_block"
-                                                                    id="nd_booking_date_month_to_front">
-                                                                    May</p>
+                                                                <p class="nd_booking_field_search nd_booking_display_inline_block" id="nd_booking_date_number_to_front">18</p>
+                                                                <p class="nd_booking_field_search nd_booking_display_inline_block" id="nd_booking_date_month_to_front">May</p>
                                                                 <img alt=""
                                                                     class="nd_booking_position_absolute nd_booking_right_20 nd_booking_top_50_percentage nd_booking_margin_top_6_negative"
                                                                     decoding="async"
@@ -664,9 +656,7 @@
                                                             <div class="nd_booking_section nd_booking_height_15"></div>
                                                             <div
                                                                 class="nd_booking_section nd_booking_section_box_search_field nd_booking_border_style_solid nd_booking_padding_10_20 nd_booking_position_relative">
-                                                                <p
-                                                                    class="nd_booking_guests_number nd_booking_display_inline_block nd_booking_field_search">
-                                                                    1</p>
+                                                                <p class="nd_booking_guests_number nd_booking_display_inline_block nd_booking_field_search">1</p>
                                                                 <img alt=""
                                                                     class="nd_booking_position_absolute nd_booking_right_20 nd_booking_top_50_percentage nd_booking_margin_top_6_negative nd_booking_guests_increase nd_booking_cursor_pointer"
                                                                     decoding="async"
@@ -681,7 +671,7 @@
                                                             <input class="nd_booking_section nd_booking_display_none"
                                                                 id="nd_booking_archive_form_guests" min="1"
                                                                 name="nd_booking_archive_form_guests"
-                                                                placeholder="Guests" type="number" value="" />
+                                                                placeholder="Guests" type="number" value="1" />
                                                         </div>
                                                         <!--guests-->
                                                         <div
@@ -699,6 +689,17 @@
                                                     jQuery(document).ready(function () {
 
                                                         jQuery(function ($) {
+
+                                                            // Set tommorrows date
+                                                            var currentDate = new Date();
+                                                            var currentToDate = new Date(currentDate);
+                                                            currentToDate.setDate(currentDate.getDate() + 1);
+
+                                                            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                                                            $("#nd_booking_date_number_from_front").text(currentDate.getDate());
+                                                            $("#nd_booking_date_month_from_front").text(months[currentDate.getMonth()]);
+                                                            $("#nd_booking_date_number_to_front").text(currentToDate.getDate() + 1);
+                                                            $("#nd_booking_date_month_tp_front").text(months[currentToDate.getMonth()]);
 
                                                             $("#nd_booking_archive_form_date_range_from").datepicker({
                                                                 defaultDate: "+1w",

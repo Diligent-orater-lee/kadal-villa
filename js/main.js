@@ -18,11 +18,14 @@ document.addEventListener("DOMContentLoaded", function() {
     checkVisibility(); // Initial check on load
 });
 
-document.getElementById('whatsappForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Stop the form from submitting normally
-    var message = "Enquiry direct whatsapp date time availablity feature implementation. Needs rafii confirmation for UI changes";
-    var encodedMessage = encodeURIComponent(message);
-    var phoneNumber = '+919633096006'; // Replace with the number you want to send the message to
-    var whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.open(whatsappUrl); // Open WhatsApp in a new tab/window
+jQuery(function($){
+    document.getElementById('whatsappForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Stop the form from submitting normally
+        var message = `Check in date: ${$("#nd_booking_date_month_from").val()} ${$("#nd_booking_archive_form_date_range_from").val().substring(3, 5)}.\nCheck out date: ${$("#nd_booking_date_month_to").val()} ${$("#nd_booking_archive_form_date_range_to").val().substring(3, 5)}.\n
+        Number of guests: ${$("#nd_booking_archive_form_guests").val()}`;
+        var encodedMessage = encodeURIComponent(message);
+        var phoneNumber = '+919633096006'; // Replace with the number you want to send the message to
+        var whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        window.open(whatsappUrl); // Open WhatsApp in a new tab/window
+    });
 });
