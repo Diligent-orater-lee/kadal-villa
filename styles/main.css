@@ -2562,6 +2562,12 @@ body .is-layout-flex>* {
     flex-direction: row-reverse;
 }
 
+.know-more {
+    padding: 12px !important;
+    margin-top: 12px;
+    font-size: 16px !important;
+}
+
 @media (min-width: 1025px) {
     .id-879584 {
         margin-top: 72px;
