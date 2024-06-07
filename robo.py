@@ -67,8 +67,8 @@ def download_file(url, output_folder):
     return None
 
 # Usage
-html_file_path = './about.html'  # Update this path
-target_string = 'https://www.nicdarkthemes.com/themes/hotel-resort/wp/demo/hotel/wp-includes/js'  # The specific string to look for in hrefs
-output_directory = './auto_files/wp-includes-js'  # Folder where files will be saved
+html_file_path = './index.html'  # Update this path
+target_string = 'https://www.nicdarkthemes.com/themes/hotel-resort/wp/demo/hotel/wp-content/themes/marina'  # The specific string to look for in hrefs
+output_directory = './auto_files/marina-theme'  # Folder where files will be saved
 
 download_and_update_html(html_file_path, target_string, output_directory)
