@@ -20,7 +20,7 @@ def find_tags_with_url(file_path, url_start):
         return f"Error processing {file_path}: {str(e)}"
 
 # URL to search for
-url_start = 'https://www.nicdarkthemes.com/themes/hotel-resort/wp/demo/hotel/wp-content/themes/marina'
+url_start = 'https://www.nicdarkthemes.com'
 
 # Files to search in
 file1 = './about.html'

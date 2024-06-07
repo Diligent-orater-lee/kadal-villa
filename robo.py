@@ -2,6 +2,8 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
+downloadedFileNames = []
+
 def download_and_update_html(html_file_path, target_string, output_folder):
     # Ensure the output folder exists
     os.makedirs(output_folder, exist_ok=True)
@@ -57,6 +59,10 @@ def download_file(url, output_folder):
         response = requests.get(url)
         if response.status_code == 200:
             filename = os.path.basename(url).split('?')[0]
+            i = 0
+            while (filename in downloadedFileNames):
+                file_base, file_extension = os.path.splitext(os.path.basename(url).split('?')[0])
+                filename = f"{file_base}_{++i}{file_extension}"
             download_path = f"{output_folder}/{filename}"
             with open(download_path, 'wb') as f:
                 f.write(response.content)
@@ -68,7 +74,7 @@ def download_file(url, output_folder):
 
 # Usage
 html_file_path = './index.html'  # Update this path
-target_string = 'https://www.nicdarkthemes.com/themes/hotel-resort/wp/demo/hotel/wp-content/themes/marina'  # The specific string to look for in hrefs
-output_directory = './auto_files/marina-theme'  # Folder where files will be saved
+target_string = 'https://www.nicdarkthemes.com/themes/hotel-resort/wp/demo/hotel/wp-content/plugins/nd-elements'  # The specific string to look for in hrefs
+output_directory = './auto_files/nd-elements'  # Folder where files will be saved
 
 download_and_update_html(html_file_path, target_string, output_directory)
